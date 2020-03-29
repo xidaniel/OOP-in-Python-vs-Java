@@ -6,12 +6,12 @@ reference https://realpython.com/oop-in-python-vs-java/
 
 ## Object Attributes
 ### Java Coding example
-   - class name same as file name
+   - class name is same as file name
    - Only one class can be defined in each file
-   - static is to defind class attribute
-   - can change private variable through a public method
+   - static is use to defind class attribute not object
+   - Through a public method to change private object variable
    - access private attributes using setters and getters
-   - this
+   - this: when a parameter name is same as a class variable
    - Functions can’t exist outside of a class, and by definition, all Java functions are methods
    
          public class Car {
@@ -19,9 +19,9 @@ reference https://realpython.com/oop-in-python-vs-java/
               private String model;
               private int year;
               
-             (private static int wheels;  // It is class variable and share to each class instance.  not recommend)
+             (private static int wheels;)  // It is class variable and share to each class instance.  not recommend)
               
-              // constructure
+              // constructure 
               public Car(String color, String model, int year) {
                   this.color = color;
                   this.model = model;
@@ -37,13 +37,13 @@ reference https://realpython.com/oop-in-python-vs-java/
  ### Python coding example
    - can declare a class anywhere, in any file, at any time
    - save this calss in the file car.py
-   - every is public, except add perfixing two underscore character
+   - everything is public, except for add perfixing two underscore character
    - access to class attributes using Python decorator syntax
    - self
    
          class Car:
          
-           (wheels = 0     // It is class variable and share to each class instance. not recommend)
+           (wheels = 0)     // It is class variable and share to each class instance. not recommend
             
             // constructure
             def __init__(self, color, model, year):
@@ -59,9 +59,9 @@ reference https://realpython.com/oop-in-python-vs-java/
 ____________________________________________________________________________________________________________________________
  ## Inheritance and Polymorphism
  ### Java codeing example
-   - Java only supports single inheritance, which means classes in Java can inherit data and behavior from only a single parent class. 
+   - Java only supports single inheritance, which means classes in Java can inherit data and behavior from only a single parent class
    - Java objects can inherit behavior from many different interfaces
-   - Interfaces provide a group of related methods an object must implement, and allow multiple child classes to behave similarly.
+   - Interfaces provide a group of related methods an object must implement, and allow multiple child classes to behave similarly
    - Interfaces only define the methods—they cannot define instance data or implementation details
    - Each class and interface needs to live in its own file
 
@@ -69,12 +69,13 @@ ________________________________________________________________________________
 
              private String color;
              private String model;
-
+             
+             // constructure
              public Vehicle(String color, String model) {
                  this.color = color;
                  this.model = model;
              }
-
+             // method
              public String getColor() {
                  return color;
              }
@@ -83,31 +84,31 @@ ________________________________________________________________________________
                  return model;
              }
          }
-
+         
          public interface Device {
-    int getVoltage();
-      }
-
-      public class Car extends Vehicle implements Device {
-
-          private int voltage;
-          private int year;
-
-          public Car(String color, String model, int year) {
-              super(color, model);
-              this.year = year;
-              this.voltage = 12;
+             int getVoltage();
           }
+          
+         public class Car extends Vehicle implements Device {
 
-          @Override
-          public int getVoltage() {
-              return voltage;
-          }
+             private int voltage;
+             private int year;
 
-          public int getYear() {
-              return year;
-          }
-      }
+             public Car(String color, String model, int year) {
+                 super(color, model);    // super private color and private model
+                 this.year = year;
+                 this.voltage = 12;
+             }
+
+             @Override  interface method
+             public int getVoltage() {
+                 return voltage;
+             }
+
+             public int getYear() {
+                 return year;
+             }
+         }
       
       
  ### Python coding example
